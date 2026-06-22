@@ -37,11 +37,11 @@ def create_stage_2(project: dict) -> str | None:
             "@Cliente para a gente começar a rodar o seu CRM, preciso que você finalize a assinatura no link abaixo:\n\n"
             "👉 https://buy.stripe.com/8x2cMXcqZ1dgd6o2aPafS0i\n\n"    
             "🚨*ATENÇÃO*🚨\n"
-            "Use o cupom **matte100** para ativar 12 meses de desconto na ferramenta.\n\n"
+            "Use o cupom *matte100* para ativar 12 meses de desconto na ferramenta.\n\n"
             "Qualquer dúvida na hora de preencher, me chama aqui.\n\n\n\n\n"
             "---------------------------------------\n\n\n"
             "2- Enviar segunda mensagem relembrando que é necessário o uso do cupom.\n\n\n"
-            "**ATENÇÃO:** @Cliente, é necessário o uso do **CUPOM**\n"
+            "*ATENÇÃO:* @Cliente, é necessário o uso do *CUPOM*\n"
             "O valor da compra precisa ser de R$0,00"
         ) 
     }

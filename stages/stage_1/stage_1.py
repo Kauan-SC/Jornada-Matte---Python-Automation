@@ -49,12 +49,12 @@ def run(client_name: str, company_name: str, service_description: str) -> dict |
     APRESENTACAO_EQUIPE = {
         "name": "Apresentação da Equipe",
         "description": (
-            "3- Apresentar a equipe:\n\n"
-            "Gostaria de apresentar oficialmente nosso time:\n"
-            "🚀 Estratégia e Liderança: @Pedro , nosso Founder, acompanhará o projeto de perto com você.\n"
-            "🤝 Comercial: @Joao e @Negrete.\n"
-            "📱 Marketing & Social: @Joao Social Selling.\n"
-            "⚙️ Tecnologia: @Felipe , @Vitor e @Isaac são nossa célula de TI dedicada.\n"
+            "3- Apresentar a equipe:\n\n\n"
+            "Gostaria de apresentar oficialmente nosso time:\n\n"
+            "🚀 Estratégia e Liderança: @Pedro , nosso Founder, acompanhará o projeto de perto com você.\n\n"
+            "🤝 Comercial: @Joao, @Felipe e @Negrete.\n"
+            "📱 Marketing & Social: @Joao Social Selling.\n\n"
+            "⚙️ Tecnologia: @Felipe , @Vitor e @Isaac são nossa célula de TI dedicada.\n\n"
             "📋 Gestão e Sucesso: Eu sou o Gestor de Projetos e o @Virtao CS do time, "
             "e estaremos ao seu lado durante toda a jornada para garantir os melhores resultados."
         ),
