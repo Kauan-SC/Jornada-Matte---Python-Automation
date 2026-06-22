@@ -1,0 +1,31 @@
+from constants import TaskStatus, get_due_date
+from core.logger import get_logger
+from integrations.clickup import create_task
+
+logger = get_logger(__name__)
+
+def create_stage_3b(project: dict) -> str | None:
+
+    logger.info(f"Etapa 3B Iniciada - {project['company_name']}")
+
+    data = get_due_date(15)
+
+    # Create Task - Third Step - A
+    task = create_task(
+        name=f"Criação da IA - {project['company_name']}",
+        status=TaskStatus.TAREFAS_DEV,
+        description=(
+        "Realizar a criaçao da IA:\n"
+
+        "Briefing abaixo:"),
+        due_date=data
+    )
+
+    if task is None:
+        logger.error(f"Erro na Etapa 3B - {project['company_name']}")
+        return None
+    
+    task_id = task["id"]
+    logger.info(f"Etapa 3B iniciada - {project['company_name']} - Task-Id: {task_id}")
+    return task_id
+    

@@ -1,0 +1,37 @@
+service: Jornada-Matte
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.11
+  httpApi:
+    cors: true
+  
+
+functions:
+  jornada-matte:
+    handler: handler.webhook
+    events:
+      - httpApi:
+          path: /webhook
+          method: post
+
+  checker:
+    handler: handler.check_stages
+    timeout: 30
+    events:
+      - schedule: cron(0/10 11-21 ? * MON-FRI *)
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: false
+    pipCmdExtraArgs:
+      - '--platform'
+      - 'manylinux2014_x86_64'
+      - '--python-version'
+      - '3.11'
+      - '--only-binary=:all:'
+    slim: true
