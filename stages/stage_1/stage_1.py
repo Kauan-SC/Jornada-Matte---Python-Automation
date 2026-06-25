@@ -78,9 +78,9 @@ def run(client_name: str, company_name: str, service_description: str) -> dict |
         "description": (
             "1- Marcar o Onboarding de Apresentação com o cliente\n\n"
             "O primeiro passo é agendarmos nosso Onboarding e dar início ao projeto.\n\n"
-            "O objetivo desse encontro é alinhar tudo para o sucesso da operação:\n"
+            "O objetivo desse encontro é alinhar tudo para o sucesso da operação:\n\n"
             "🚀 Acesso aos materiais exclusivos para acelerar seus resultados;\n\n"
-            "🤖 Apresentação do Briefing da IA;\n"
+            "🤖 Apresentação do Briefing da IA;\n\n"
             "✅ Definição dos próximos passos para colocar sua operação no piloto automático.\n\n"
             "Vocês preferem o período da manhã ou da tarde?\n\n"
             "Qualquer dúvida antes da reunião, é só chamar por aqui.\n\n"
