@@ -18,7 +18,9 @@ class Stages:
     STAGE_3D = "stage_3_d"
     STAGE_4A = "stage_4_a"
     STAGE_4B = "stage_4_b"
-    FINAL_STAGE = "final_stage"
+    FINAL_STAGE_CRM = "final_stage_CRM"
+    FINAL_STAGE_IA = "final_stage_IA"
+    FOLLOW_UP = "follow_up"
 
 # Project Pipelines
 class TaskStatus:

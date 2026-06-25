@@ -11,7 +11,9 @@ headers = {
     "Acess-Control-Allow-Headers": "Content-Type"
 }
 
+#  --------------------------------------------------------------------------
 
+# Webhook
 def webhook(event: dict, context: object) -> dict:
 
     try:
@@ -38,7 +40,10 @@ def webhook(event: dict, context: object) -> dict:
             "statusCode": 500,
             "body": json.dumps({"Error": str(e)}),
         }
-    
+
+#  --------------------------------------------------------------------------
+
+# Check completed tasks
 def check_stages(event: dict, context: object) -> dict:
     try:
         from stages.stage_1.stage_1_check import check_stage_1
@@ -59,6 +64,48 @@ def check_stages(event: dict, context: object) -> dict:
         return {
             "statusCode": 200,
             "body":json.dumps({"Ok": True}),
+        }
+    
+    except Exception as e:
+        logger.error(f"Erro na verificação da tarefa: {type(e).__name__}: {e}")
+        logger.error(traceback.format_exc())
+        return {
+            "statusCode": 500,
+            "body": json.dumps({"Error": str(e)}),
+        }
+
+#  --------------------------------------------------------------------------
+
+# Validação - Two times a week
+def validacao_check(event: dict, context: object) -> dict:
+    try:
+        from stages.stage_follow_up.validacao.validacao_check import validacao_check
+        validacao_check()
+        return {
+            "statusCode": 500,
+            "body": json.dumps({"Error": str(e)}),
+
+        }
+    
+    except Exception as e:
+        logger.error(f"Erro na verificação da tarefa: {type(e).__name__}: {e}")
+        logger.error(traceback.format_exc())
+        return {
+            "statusCode": 500,
+            "body": json.dumps({"Error": str(e)}),
+        }
+    
+#  --------------------------------------------------------------------------
+
+# Checkpoint - One time a week
+def checkpoint_check(event: dict, context: object) -> dict:
+    try:
+        from stages.stage_follow_up.checkpoint.checkpoint_check import checkpoint_check
+        checkpoint_check()
+        return {
+            "statusCode": 500,
+            "body": json.dumps({"Error": str(e)}),
+
         }
     
     except Exception as e:
