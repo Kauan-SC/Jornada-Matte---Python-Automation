@@ -7,6 +7,8 @@ from config import SUPABASE_KEY, SUPABASE_URL
 # Supabase
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
+# -------------------------------------------------------------------
+
 # Get all task determined in the stage
 def get_active_projects_by_stage(stage: str) -> list[dict]:
     return (
@@ -29,6 +31,9 @@ def update_project(project_id: str, new_stage: str, new_task_id: str, new_task_i
         data["task_id_b"] = new_task_id_b
     supabase.table("projects").update(data).eq("id", project_id).execute()
 
+# -------------------------------------------------------------------
+
+# Create a bifurcation on CRM and AI Tasks
 def insert_project_branch(original: dict, stage: str, task_id: str) -> None:
     supabase.table("projects").insert({
         "company_name": original["company_name"],
@@ -39,3 +44,27 @@ def insert_project_branch(original: dict, stage: str, task_id: str) -> None:
         "status": "active",
         "started_at": datetime.utcnow().isoformat(),
     }).execute()
+
+# Get all Completed projects
+def get_completed_projects_by_stage(stage: str) -> list[dict]:
+    return (
+        supabase.table("projects")
+        .select("*")
+        .eq("current_stage", stage)
+        .eq("status", "completed")
+        .execute()
+        .data
+    )
+
+# Update completed projects
+def update_completed_project(project_id: str, new_stage: str, new_task_id: str, new_task_id_b: str | None = None) -> None:
+    data = {
+        "current_stage": new_stage,
+        "task_id": new_task_id,
+        "status": "completed",
+        "started_at": datetime.utcnow().isoformat(),
+        "first_delivery_at": datetime.utcnow().isoformat(),
+    }
+    if new_task_id_b:
+        data["task_id_b"] = new_task_id_b
+    supabase.table("projects").update(data).eq("id", project_id).execute()
