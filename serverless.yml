@@ -23,13 +23,13 @@ functions:
     events:
       - schedule: cron(0/10 11-21 ? * MON-FRI *)
     
-    validacao:
+  validacao:
     handler: handler.validacao_check
     timeout: 60
     events:
       - schedule: cron(0 0 1,16 * ? *)
 
-    checkpoint:
+  checkpoint:
     handler: handler.checkpoint_check
     timeout: 60
     events:
