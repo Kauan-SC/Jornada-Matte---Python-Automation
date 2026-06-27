@@ -35,6 +35,12 @@ functions:
     events:
       - schedule: cron(0 0 1 * ? *)
 
+  dashboard:
+    handler: handler.dashboard
+    timeout: 60
+    events:
+      - schedule: (1 hour)
+
 plugins:
   - serverless-python-requirements
 

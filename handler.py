@@ -82,7 +82,7 @@ def validacao_check(event: dict, context: object) -> dict:
         from stages.stage_follow_up.validacao.validacao_check import validacao_check
         validacao_check()
         return {
-            "statusCode": 500,
+            "statusCode": 200,
             "body": json.dumps({"Error": str(e)}),
 
         }
@@ -103,13 +103,33 @@ def checkpoint_check(event: dict, context: object) -> dict:
         from stages.stage_follow_up.checkpoint.checkpoint_check import checkpoint_check
         checkpoint_check()
         return {
-            "statusCode": 500,
-            "body": json.dumps({"Error": str(e)}),
+            "statusCode": 200,
+            "body":json.dumps({"Ok": True}),
 
         }
     
     except Exception as e:
         logger.error(f"Erro na verificação da tarefa: {type(e).__name__}: {e}")
+        logger.error(traceback.format_exc())
+        return {
+            "statusCode": 500,
+            "body": json.dumps({"Error": str(e)}),
+        }
+
+#  --------------------------------------------------------------------------
+
+# Dashboard
+def dashboard(event: dict, context: object) -> dict:
+    try:
+        from integrations.clickup import get_tasks
+        tarefas = get_tasks()
+        return {
+            "statusCode": 200,
+            "body":json.dumps(tarefas),
+
+        }
+    except Exception as e:
+        logger.error(f"Erro no Get_task do Dashboard: {type(e).__name__}: {e}")
         logger.error(traceback.format_exc())
         return {
             "statusCode": 500,

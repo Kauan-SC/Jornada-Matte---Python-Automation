@@ -1,0 +1,570 @@
+/* ===== RESET & VARIABLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #0d0d0d;
+    --surface: #d3145a31;
+    --surface-2: #0c0c0c;
+    --border: #D3145A;
+    --text: #f0f0f0;
+    --text-muted: #f5f3f3;
+    --accent: #ffffff;
+    --radius: 10px;
+    --gap: 16px;
+}
+
+body.light {
+    --bg: #f2f2f2;
+    --surface: #d3145a31;
+    --surface-2: #ffffff;
+    --border: #D3145A;
+    --text: #111;
+    --text-muted: #000000;
+    --accent: #000000;
+}
+
+/* ===== BASE ===== */
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+}
+
+.header .logo {
+    height: 32px;
+    width: auto;
+}
+
+.header .controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-theme {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+/* ===== TABS ===== */
+.tabs {
+    display: flex;
+    gap: 4px;
+    padding: 12px 24px 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-2);
+}
+
+.tab {
+    padding: 8px 18px;
+    border-radius: 8px 8px 0 0;
+    border: 1px solid transparent;
+    border-bottom: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    background: transparent;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.15s;
+}
+
+.tab.active {
+    background: var(--bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+/* ===== PAGE WRAPPER ===== */
+.page {
+    display: none;
+    padding: 20px 24px;
+}
+
+.page.active {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+/* ===== CARDS GENÉRICOS ===== */
+.card {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+}
+
+.card-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.card-value {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+}
+
+/* ===== ABA 1 — LAYOUT ===== */
+
+/* Linha 1: 2 cards de projeto */
+.row-projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+}
+
+/* Linha 2: 6 stages */
+.row-stages {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--gap);
+}
+
+.stage-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-align: center;
+    padding: 16px;
+}
+
+.stage-card .stage-name {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.stage-card .stage-count {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+/* Linhas 3 e 4 juntas */
+.row-chart {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: var(--gap);
+    align-items: stretch;
+}
+
+.avg-cards-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+.avg-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.avg-card .card-label {
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.avg-card .avg-value {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.avg-card .avg-unit {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* Status Dash */
+.status-dash {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.status-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 120px;
+    padding-top: 8px;
+}
+
+.status-emoji {
+    font-size: 36px;
+}
+
+.status-label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status-label.red {
+    color: #ff4d4d;
+}
+
+.status-label.yellow {
+    color: #f5c518;
+}
+
+.status-label.blue {
+    color: #4d9fff;
+}
+
+.status-divider {
+    width: 1px;
+    background: var(--border);
+    align-self: stretch;
+}
+
+.status-tasks {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.status-task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: var(--surface-2);
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.task-deadline {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.task-deadline.urgent {
+    color: #ff4d4d;
+}
+
+/* ===== ABA 2 — PROJETOS ===== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--gap);
+}
+
+.project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    position: relative;
+}
+
+.project-card .project-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    padding-right: 24px;
+}
+
+.progress-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.progress-bar {
+    height: 6px;
+    background: var(--surface-2);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 99px;
+    transition: width 0.4s ease;
+}
+
+.progress-fill.crm {
+    background: #4d9fff;
+}
+
+.progress-fill.ia {
+    background: #a855f7;
+}
+
+.project-menu-btn {
+    position: absolute;
+    top: 14px;
+    right: 12px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.project-menu-btn:hover {
+    background: var(--surface-2);
+}
+
+/* Modal */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.open {
+    display: flex;
+}
+
+.modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    min-width: 280px;
+}
+
+.modal h3 {
+    font-size: 15px;
+    margin-bottom: 16px;
+}
+
+.modal select {
+    width: 100%;
+    padding: 8px 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 13px;
+    margin-bottom: 14px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.btn {
+    padding: 7px 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+}
+
+/* ===== ABA 3 — DEV DO MÊS ===== */
+.devmonth-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 24px;
+}
+
+.ranking {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.rank-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.rank-position {
+    font-size: 22px;
+    font-weight: 700;
+    min-width: 36px;
+    color: var(--text-muted);
+}
+
+.rank-card.first .rank-position {
+    color: #f5c518;
+}
+
+.rank-card.second .rank-position {
+    color: #aaaaaa;
+}
+
+.rank-card.third .rank-position {
+    color: #cd7f32;
+}
+
+.rank-photo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    object-fit: cover;
+}
+
+.rank-info .rank-name {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.rank-info .rank-score {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.feedback-form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.feedback-form h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-group label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 8px 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 13px;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 70px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 12px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 13px;
+    color: var(--text);
+    cursor: pointer;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 99px;
+}
