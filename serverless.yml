@@ -8,38 +8,38 @@ provider:
     cors: true
   
 
-functions:
-  jornada-matte:
-    handler: handler.webhook
-    timeout: 30
-    events:
-      - httpApi:
-          path: /webhook
-          method: post
+# functions:
+#   jornada-matte:
+#     handler: handler.webhook
+#     timeout: 30
+#     events:
+#       - httpApi:
+#           path: /webhook
+#           method: post
 
-  checker:
-    handler: handler.check_stages
-    timeout: 60
-    events:
-      - schedule: cron(0/10 11-21 ? * MON-FRI *)
+#   checker:
+#     handler: handler.check_stages
+#     timeout: 60
+#     events:
+#       - schedule: cron(0/10 11-21 ? * MON-FRI *)
     
-  validacao:
-    handler: handler.validacao_check
-    timeout: 60
-    events:
-      - schedule: cron(0 0 1,16 * ? *)
+#   validacao:
+#     handler: handler.validacao_check
+#     timeout: 60
+#     events:
+#       - schedule: cron(0 0 1,16 * ? *)
 
-  checkpoint:
-    handler: handler.checkpoint_check
-    timeout: 60
-    events:
-      - schedule: cron(0 0 1 * ? *)
+#   checkpoint:
+#     handler: handler.checkpoint_check
+#     timeout: 60
+#     events:
+#       - schedule: cron(0 0 1 * ? *)
 
-  dashboard:
-    handler: handler.dashboard
-    timeout: 60
-    events:
-      - schedule: (1 hour)
+#   dashboard:
+#     handler: handler.dashboard
+#     timeout: 60
+#     events:
+#       - schedule: rate(1 hour)
 
 plugins:
   - serverless-python-requirements

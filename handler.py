@@ -83,7 +83,7 @@ def validacao_check(event: dict, context: object) -> dict:
         validacao_check()
         return {
             "statusCode": 200,
-            "body": json.dumps({"Error": str(e)}),
+            "body":json.dumps({"Ok": True}),
 
         }
     

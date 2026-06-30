@@ -1,5 +1,5 @@
-const { CLICKUP_API_KEY, CLICKUP_TEAM_ID, CLICKUP_LIST_ID, SUPABASE_KEY, SUPABASE_URL } = require('/config')
-const { Stages, TaskStatus, ProjectStatus, ClickUpMembers } = require('./constants')
+const { CLICKUP_API_KEY, CLICKUP_TEAM_ID, CLICKUP_LIST_ID, SUPABASE_KEY, SUPABASE_URL } = require('../config')
+const { Stages, TaskStatus, ProjectStatus, ClickUpMembers } = require('../constants')
 
 // ─── CONSTANTS (ajuste com seus valores) ──────────────────────────────────── 
 const CLICKUP_LIST_IDS = {
@@ -13,7 +13,7 @@ const CLICKUP_LIST_IDS = {
 
 // ─── INIT ───────────────────────────────────────────────────────────────────
 const { createClient } = supabase   // global do CDN
-const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+const db = createClient(SUPABASE_URL, SUPABASE_KEY)
 
 let _modalLeadId = null
 let _devmonthData = []
