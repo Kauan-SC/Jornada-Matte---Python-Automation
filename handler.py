@@ -52,7 +52,7 @@ def check_stages(event: dict, context: object) -> dict:
         from stages.stage_3.stage_3_b.stage_3b_check import check_stage_3b
         from stages.stage_3.stage_3_c.stage_3c_check import check_stage_3c
         from stages.stage_3.stage_3_d.stage_3d_check import check_stage_3d
-        from stages.stage_final.stage_final_check import check_stage_4a, check_stage_4b
+        from stages.stage_final.stage_final_check import check_stage_4a
         check_stage_1()
         check_stage_2()
         check_stage_3a()
@@ -60,7 +60,6 @@ def check_stages(event: dict, context: object) -> dict:
         check_stage_3c()
         check_stage_3d()
         check_stage_4a()
-        check_stage_4b()
         return {
             "statusCode": 200,
             "body":json.dumps({"Ok": True}),

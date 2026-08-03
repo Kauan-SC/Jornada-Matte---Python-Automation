@@ -14,13 +14,3 @@ def check_stage_4a() -> None:
             logger.info(f"Projeto {project['company_name']}: Etapa 4A concluida. Personalização do CRM concluida!")
 
             update_completed_project(project["id"], Stages.FINAL_STAGE_CRM, project["task_id"])
-
-
-def check_stage_4b() -> None:
-    projects = get_active_projects_by_stage(Stages.STAGE_4B)
-
-    for project in projects:
-        if is_task_completed(project["task_id"]):
-            logger.info(f"Projeto {project['company_name']}: Etapa 4B concluida. Criação da IA finalizada!")
-
-            update_completed_project(project["id"], Stages.FINAL_STAGE_IA, project["task_id"])

@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 from constants import ProjectStatus, RoleAssignees, Stages, TaskStatus, get_due_date
 from core.database import supabase
@@ -7,13 +7,17 @@ from integrations.clickup import create_subtask, create_task
 
 logger = get_logger(__name__)
 
-# First Step
+# ETAPA: 1 - Boas-Vindas, Apresentação da Equipe, Feedback da Reunião de Vendas e Marcar Onboarding com Cliente
+
 def run(client_name: str, company_name: str, service_description: str) -> dict | None:
-    
+
+    # Histórico do projeto no log
     logger.info(f"Etapa 1 Iniciada - {company_name}")
 
+    # Data de vencimento da tarefa, 3 dias a partir da criação
     data = get_due_date(3)
 
+    # Criar a tarefa principal no ClickUp
     task = create_task(
         name=f"Primeiro Passo de - {company_name}",
         status=TaskStatus.TAREFAS_CS,
@@ -28,14 +32,16 @@ def run(client_name: str, company_name: str, service_description: str) -> dict |
         due_date=data
     )
 
+    # Se a tarefa não for criada, logar o erro e retornar None
     if task is None:
         logger.error(f"Erro na Etapa 1 - Empresa {company_name}, Cliente {client_name}")
         return None
     
     task_id = task["id"]
 
-    # Create Subtask
+# ----------------------------------------------------------------------------------------------------------------------------------------------
 
+    # Dados de cada subtarefa
     BOAS_VINDAS = {
         "name": "Boas-Vindas",
         "description": (
@@ -95,6 +101,9 @@ def run(client_name: str, company_name: str, service_description: str) -> dict |
         MARCAR_ONBOARDING,
     ]
 
+# ----------------------------------------------------------------------------------------------------------------------------------------------
+
+    # Criar as subtarefas no ClickUp
     for subtask in SUBTASKS:
         create_subtask(
             parent_task_id=task_id,
@@ -104,6 +113,8 @@ def run(client_name: str, company_name: str, service_description: str) -> dict |
             due_date=data
         )
 
+
+    # Salvar o projeto no Supabase
     try:
             supabase.table("projects").insert({
                 "client_name": client_name,
@@ -111,13 +122,19 @@ def run(client_name: str, company_name: str, service_description: str) -> dict |
                 "task_id": task_id,
                 "current_stage": Stages.STAGE_1,
                 "status": ProjectStatus.ACTIVE,
-                "created_at": datetime.utcnow().isoformat(),  # Good for Dashboard and to know when the project started. Easily to make average
-                "started_at": datetime.utcnow().isoformat(),  # Same thing that above, and show when this stage started
+                "created_at": datetime.now(timezone.utc).isoformat(),  
+                "started_at": datetime.now(timezone.utc).isoformat(),
                 "service_description": service_description,
 
-            # Dev Owner of taks will be add later
             }).execute()
+
+            # Se der certo, logar a informação de sucesso
             logger.info(f"Projeto - {company_name} salvo no Supabase - Task-Id: {task_id}")
+
     except Exception as e:
+
+        # Se der erro, logar a informação de erro
         logger.error(f"Erro ao salvar Etapa 1 no Supabase - {company_name}: {e}")
+
+
         

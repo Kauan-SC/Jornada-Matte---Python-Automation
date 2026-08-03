@@ -6,16 +6,19 @@ from stages.stage_3.stage_3_c.stage_3c import create_stage_3c
 
 logger = get_logger(__name__)
 
-# Check if projects are completed using the ID to get the task infos
-def check_stage_3b() -> None:
-    projects = get_active_projects_by_stage(Stages.STAGE_3B)
+# ETAPA: 3B Check - Verifica se a Etapa 3B foi concluída e cria a Etapa 3C
 
+def check_stage_3b() -> None:
+    projects = get_active_projects_by_stage(Stages.STAGE_3B)    # Obter todos os projetos ativos na Etapa 3B
+
+    # Para cada projeto, verificar se a tarefa da Etapa 3B foi concluída
     for project in projects:
         if is_task_completed(project["task_id"]):
             logger.info(f"Projeto {project['company_name']}: Etapa 3B concluida. Criando Etapa 3C")
 
-            new_task_id  = create_stage_3c(project)
+            new_task_id  = create_stage_3c(project)    # Criar a Etapa 3C
 
+            # Se a criação da Etapa 3C falhar, logar o erro e continuar com o próximo projeto
             if new_task_id  is None:
                 logger.error(f"Projeto {project['company_name']}: Falha ao criar Etapa 3C. Banco não atualizado.")
                 continue

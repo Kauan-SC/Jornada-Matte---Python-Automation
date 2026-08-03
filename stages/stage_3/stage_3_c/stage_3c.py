@@ -6,6 +6,8 @@ from integrations.clickup import create_task, get_task
 
 logger = get_logger(__name__)
 
+# ETAPA: 3C - Revisão da IA
+
 def get_reviewer_dev(task_id_3b: str) -> list[int]:
     task = get_task(task_id_3b)
     if task is None:
@@ -18,9 +20,14 @@ def get_reviewer_dev(task_id_3b: str) -> list[int]:
 
 # Create Task - Third Step - Verification of AI
 def create_stage_3c(project: dict) -> str | None:
+
+    # Histórico do projeto no log
     logger.info(f"Etapa 3C Iniciada - {project['company_name']}")
 
+    # Data de vencimento da tarefa, 5 dias a partir da criação
     data = get_due_date(5)
+
+    # Obter o responsável pela Etapa 3B para atribuir a tarefa de revisão da IA
     reviewer = get_reviewer_dev(project["task_id"])
 
     task = create_task(
@@ -38,6 +45,7 @@ def create_stage_3c(project: dict) -> str | None:
         due_date=data
     )
 
+    # Se a criação da Etapa 3C falhar, logar o erro e continuar com o próximo projeto
     if task is None:
         logger.error(f"Erro na Etapa 3C - {project['company_name']}")
         return None

@@ -4,13 +4,15 @@ from integrations.clickup import create_subtask, create_task
 
 logger = get_logger(__name__)
 
+# ETAPA: 2 - Pós-Onboarding, Enviar Instruções de Criação de Conta no CRM e Feedback da Reunião de Onboarding
+
 def create_stage_2(project: dict) -> str | None:
 
     logger.info(f"Etapa 2 Iniciada - {project['company_name']}")
 
     data = get_due_date(3)
 
-# Create Task - Second Step
+# Cria a tarefa principal da Etapa 2 no ClickUp
     task = create_task(
         name=f"Pós-Onboarding de - {project['company_name']}",
         status=TaskStatus.TAREFAS_CS,
@@ -23,13 +25,16 @@ def create_stage_2(project: dict) -> str | None:
         due_date=data
     )
 
+    # Se a tarefa não for criada, logar o erro e retornar None
     if task is None:
         logger.error(f"Erro na Etapa 2 - {project['company_name']}")
         return None
     
     task_id = task["id"]
 
-    # Create Subtask - Second Step
+# ----------------------------------------------------------------------------------------------------------------------------------------------
+
+    # Dados de cada subtarefa
     PROXIMOS_PASSOS = {
         "name": "Enviar instruções ao Cliente",
         "description":(
@@ -61,6 +66,9 @@ def create_stage_2(project: dict) -> str | None:
 
     SUBTASKS = [PROXIMOS_PASSOS, FEEDBACK_ONBOARDING]
 
+# ----------------------------------------------------------------------------------------------------------------------------------------------
+
+    # Criar cada subtarefa da Etapa 2 no ClickUp
     for subtask in SUBTASKS:
         create_subtask(
             parent_task_id=task_id,
