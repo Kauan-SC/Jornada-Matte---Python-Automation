@@ -39,7 +39,7 @@ Boas-Vindas e Apresentação do Time
 4. 
 
 4A -> Onboarding do CRM
-4B -> Plano de Ação de 90 dias(Desativado)
+4B -> Foi desativado
 
 5. 
 
