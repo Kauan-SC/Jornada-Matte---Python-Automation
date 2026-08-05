@@ -46,7 +46,7 @@ plugins:
 
 custom:
   pythonRequirements:
-    dockerizePip: false
+    dockerizePip: true
     pipCmdExtraArgs:
       - '--platform'
       - 'manylinux2014_x86_64'

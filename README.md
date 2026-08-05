@@ -4,11 +4,15 @@ O projeto é uma automação de onboarding pós-venda da Matte, rodando como fun
 
 O fluxo é sequencial: cada stage cria uma tarefa (e subtarefas) no ClickUp para a equipe executar manualmente, e um "check" correspondente verifica periodicamente (via is_task_completed) se aquela tarefa foi concluída no ClickUp — quando concluída, ele dispara a criação do próximo stage e atualiza o registro do projeto no Supabase (current_stage).
 
+---------------------------------------------------------------------------------------------------------------------------------------
+
 # Para que serve
 
 - O objetivo é padronizar a implementação de CRM e IA para todo cliente novo: em vez de depender da memória do time, a automação cria automaticamente as tarefas e subtarefas de cada etapa no ClickUp 
 
 - Depois que o projeto é concluído, a automação também mantém o acompanhamento recorrente (validações semanais e checkpoints mensais), garantindo que nenhum cliente fique sem contato após a entrega.
+
+---------------------------------------------------------------------------------------------------------------------------------------
 
 ## Como rodar
 1. Clone o repositório
@@ -16,11 +20,15 @@ O fluxo é sequencial: cada stage cria uma tarefa (e subtarefas) no ClickUp para
 3. Instale as dependências: `pip install -r requirements.txt`
 4. Rode: `python handler.py`
 
+---------------------------------------------------------------------------------------------------------------------------------------
+
 ## Estrutura
 - `stages/` — lógica de cada etapa do onboarding
 - `core/` — banco de dados, logging, notificações
 - `integrations/` — ClickUp e WhatsApp
 - `dashboard/` — interface web de acompanhamento
+
+---------------------------------------------------------------------------------------------------------------------------------------
 
 # Explicação por Stages
 
@@ -45,3 +53,11 @@ Boas-Vindas e Apresentação do Time
 
 Validação(15 em 15 dias)
 Checkpoint(30 em 30 dias)
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+# Como dar Deploy
+
+- Abra o arquivo na pasta usando o Terminal
+- Escreva: "wsl"
+-Depois de "serverless deploy"
