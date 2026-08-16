@@ -25,12 +25,14 @@ class Stages:
 class TaskStatus:
     ABERTAS = "ABERTAS"
     AGUARDANDO_RESPOSTA = "AGUARDANDO RESPOSTA"
+    PROJETO_FINALIZADO = "PROJETO FINALIZADO"
     REUNIOES_PEDRO = "REUNIÕES PEDRO"
     REUNIOES_KAUAN = "REUNIÕES KAUAN"
+    PERSONALIZAR_CRM = "PERSONALIZAR CRM - CS"
     TAREFAS_CS = "TAREFAS DO CS"
     TAREFAS_DEV = "CRIAR IA"
-    PERSONALIZAR_CRM = "PERSONALIZAR CRM - CS"
-    PROJETO_FINALIZADO = "PROJETO FINALIZADO"
+    TAREFAS_DE_SUPORTE = "TAREFAS DE SUPORTE"
+    COMPLETE = "COMPLETE"
 
 # Employeers Roles
 class EmployeeRoles:
@@ -42,7 +44,6 @@ class EmployeeRoles:
 class ClickUpMembers:
     PEDRO     = 72844227
     ISAAC     = 111975410
-    VITOR_AGUIAR   = 111975411   
     KAUAN     = 111975463
     FELIPE    = 118035447
     VITOR_GUEDSON   = 118065770 
@@ -53,7 +54,6 @@ class RoleAssignees:
     GESTOR = [ClickUpMembers.KAUAN]
     DEVS = [
         ClickUpMembers.ISAAC,
-        ClickUpMembers.VITOR_AGUIAR,
         ClickUpMembers.FELIPE,
     ]
 
