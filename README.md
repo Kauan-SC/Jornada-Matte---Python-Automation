@@ -25,7 +25,7 @@ O fluxo é sequencial: cada stage cria uma tarefa (e subtarefas) no ClickUp para
 ## Estrutura
 - `stages/` — lógica de cada etapa do onboarding
 - `core/` — banco de dados, logging, notificações
-- `integrations/` — ClickUp e WhatsApp
+- `integrations/` — ClickUp
 - `dashboard/` — interface web de acompanhamento
 
 ---------------------------------------------------------------------------------------------------------------------------------------
@@ -59,6 +59,6 @@ Checkpoint(30 em 30 dias)
 # Como dar Deploy
 
 - Abra o arquivo na pasta usando o Terminal
+- Abrir pasta cd "/mnt/c/Personal/Programming/Python/Jornada Matte - Automação Python"
 - Escreva: "wsl"
 -Depois de "serverless deploy"
-- Abrir pasta cd "/mnt/c/Personal/Programming/Python/Jornada Matte - Automação Python"

@@ -12,7 +12,7 @@ HEADERS = {
 }
 
 # Create Task - Object
-def create_task(name: str, description: str = "", markdown_content: str = "", assignees: list | None = None, due_date: str | None = None, status: str | None = None) -> dict | None:
+def create_task(name: str, description: str = "", markdown_content: str = "", assignees: list | None = None, due_date: int | None = None, status: str | None = None) -> dict | None:
     url = f"{BASE_URL}/list/{CLICKUP_LIST_ID}/task"
     payload = {
         "name": name,
@@ -36,7 +36,7 @@ def create_task(name: str, description: str = "", markdown_content: str = "", as
 # --------------------------------------------------------------------------------------------------------------------------------------------
 
 # Create Sub-Task - Object
-def create_subtask(parent_task_id: str, name: str, description: str = "", markdown_content: str = "", assignees: list = [], due_date: str | None = None) -> dict | None:
+def create_subtask(parent_task_id: str, name: str, description: str = "", markdown_content: str = "", assignees: list = [], due_date: int | None = None) -> dict | None:
     url = f"{BASE_URL}/list/{CLICKUP_LIST_ID}/task"
     payload = {
         "name": name,

@@ -1,5 +1,5 @@
-import os
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
@@ -11,3 +11,6 @@ CLICKUP_LIST_ID = os.getenv("CLICKUP_LIST_ID")
 # Supabase
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+
+# Discord
+DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
