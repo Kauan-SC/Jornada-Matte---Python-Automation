@@ -1,6 +1,7 @@
 # Project Status
 from datetime import datetime, timedelta
-
+from zoneinfo import ZoneInfo
+from typing import ClassVar
 
 class ProjectStatus:
     ACTIVE = "active"
@@ -47,19 +48,21 @@ class ClickUpMembers:
     KAUAN     = 111975463
     FELIPE    = 118035447
     VITOR_GUEDSON   = 118065770 
+    MARCOS_EDUARDO  = 101717627
 
 # Roles/Assignees Mapping
 class RoleAssignees:
-    CS = [ClickUpMembers.VITOR_GUEDSON]
-    GESTOR = [ClickUpMembers.KAUAN]
-    DEVS = [
+    CS: ClassVar[list[int]] = [ClickUpMembers.VITOR_GUEDSON]
+    GESTOR: ClassVar[list[int]] = [ClickUpMembers.KAUAN]
+    DEVS: ClassVar[list[int]] = [
         ClickUpMembers.ISAAC,
         ClickUpMembers.FELIPE,
+        ClickUpMembers.MARCOS_EDUARDO
     ]
 
 # Objetc to get due_date in timestamp format
 def get_due_date(days: int) -> int:
-    due = datetime.now()
+    due = datetime.now(ZoneInfo("America/Sao_Paulo"))
     days_added = 0
     while days_added < days:
         due += timedelta(days=1)
