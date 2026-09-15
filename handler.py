@@ -1,5 +1,6 @@
 import json
 import traceback
+import time
 
 from core.logger import get_logger
 from stages.stage_1.stage_1 import run
@@ -43,35 +44,45 @@ def webhook(event: dict, context: object) -> dict:
 
 #  --------------------------------------------------------------------------
 
+MAX_TENTATIVAS = 3
+
 # Check completed tasks
 def check_stages(event: dict, context: object) -> dict:
-    try:
-        from stages.stage_1.stage_1_check import check_stage_1
-        from stages.stage_2.stage_2_check import check_stage_2
-        from stages.stage_3.stage_3_a.stage_3a_check import check_stage_3a
-        from stages.stage_3.stage_3_b.stage_3b_check import check_stage_3b
-        from stages.stage_3.stage_3_c.stage_3c_check import check_stage_3c
-        from stages.stage_3.stage_3_d.stage_3d_check import check_stage_3d
-        from stages.stage_final.stage_final_check import check_stage_4a
-        check_stage_1()
-        check_stage_2()
-        check_stage_3a()
-        check_stage_3b()
-        check_stage_3c()
-        check_stage_3d()
-        check_stage_4a()
-        return {
-            "statusCode": 200,
-            "body":json.dumps({"Ok": True}),
-        }
-    
-    except Exception as e:
-        logger.error(f"Erro na verificação da tarefa: {type(e).__name__}: {e}")
-        logger.error(traceback.format_exc())
-        return {
-            "statusCode": 500,
-            "body": json.dumps({"Error": str(e)}),
-        }
+
+    from stages.stage_1.stage_1_check import check_stage_1
+    from stages.stage_2.stage_2_check import check_stage_2
+    from stages.stage_3.stage_3_a.stage_3a_check import check_stage_3a
+    from stages.stage_3.stage_3_b.stage_3b_check import check_stage_3b
+    from stages.stage_3.stage_3_c.stage_3c_check import check_stage_3c
+    from stages.stage_3.stage_3_d.stage_3d_check import check_stage_3d
+    from stages.stage_final.stage_final_check import check_stage_4a
+
+    for nome, func in [
+        ("stage_1", check_stage_1),
+        ("stage_2", check_stage_2),
+        ("stage_3.stage_3_a", check_stage_3a),
+        ("stage_3.stage_3_b", check_stage_3b),
+        ("stage_3.stage_3_c", check_stage_3c),
+        ("stage_3.stage_3_d", check_stage_3d),
+        ("stage_final", check_stage_4a),
+    ]:
+        for tentativa in range(1, MAX_TENTATIVAS + 1):
+
+            try:
+                func()
+                break
+            except Exception as e:
+                logger.error(f"Erro no {nome} (tentativa {tentativa} de {MAX_TENTATIVAS})")
+
+                if tentativa == MAX_TENTATIVAS:
+                    logger.error(f"Erro na verificação da tarefa: {type(e).__name__}: {e}")
+                    logger.error(traceback.format_exc())
+                    break
+                
+                else:
+                    time.sleep(60)
+
+    return {"statusCode": 200, "body": json.dumps({"Ok": True})}
 
 #  --------------------------------------------------------------------------
 
