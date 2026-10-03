@@ -40,7 +40,7 @@ def create_stage_2(project: dict) -> str | None:
         "description":(
             "1- Enviar detalhes sobre criação da conta no CRM\n\n\n"
             "@Cliente para a gente começar a rodar o seu CRM, preciso que você finalize a assinatura no link abaixo:\n\n"
-            "👉 https://buy.stripe.com/8x2cMXcqZ1dgd6o2aPafS0i\n\n"    
+            "👉 https://ativar.magneticfunnels.io/conta-partner\n\n"    
             "🚨*ATENÇÃO*🚨\n"
             "Use o cupom *matte100* para ativar 12 meses de desconto na ferramenta.\n\n"
             "Qualquer dúvida na hora de preencher, me chama aqui.\n\n\n\n\n"
@@ -51,20 +51,7 @@ def create_stage_2(project: dict) -> str | None:
         ) 
     }
 
-    FEEDBACK_ONBOARDING = {
-        "name": "Feedback do Onboarding de Apresentação",
-        "description": (
-            "1- Enviar para o privado do cliente esse link para que ele possa avaliar a reunião de Apresentação do Sistema\n\n\n"
-            "Oi! Tudo bem? 😊\n"
-            "Mandando mensagem aqui, para saber oque achou da reunião de Onboarding/Apresentação da Matte que realizou com o Kauan!\n\n"
-            "Isso ajuda nosso time a evoluir e atender cada vez melhor!\n\n"
-            "Pedimos apenas 1 minutinho do seu tempo para avaliar como foi a conversa:\n"
-            "👉 https://agenda.mattefunnelpro.com/widget/survey/RyKgq0KShQtHgZ0FAkah\n\n"
-            "Sua opinião faz toda a diferença para nós. Obrigado!"
-        ),
-    }
-
-    SUBTASKS = [PROXIMOS_PASSOS, FEEDBACK_ONBOARDING]
+    SUBTASKS = [PROXIMOS_PASSOS]
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------
 

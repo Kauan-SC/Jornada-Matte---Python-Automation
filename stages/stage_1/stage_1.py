@@ -60,22 +60,9 @@ def run(client_name: str, company_name: str, service_description: str) -> dict |
             "🚀 Estratégia e Liderança: @Pedro , nosso Founder, acompanhará o projeto de perto com você.\n\n"
             "🤝 Comercial: @Joao.\n"
             "📱 Marketing & Social: @Joao Social Selling.\n\n"
-            "⚙️ Tecnologia: @Felipe e @Isaac são nossa célula de TI dedicada.\n\n"
-            "📋 Gestão e Sucesso: Eu sou o Gestor de Projetos e o @Virtao CS do time, "
+            "⚙️ Tecnologia: @Felipe, @Marcos e @Isaac são nossa célula de TI dedicada.\n\n"
+            "📋 Gestão e Sucesso: Eu sou o Gestor de Projetos "
             "e estaremos ao seu lado durante toda a jornada para garantir os melhores resultados."
-        ),
-    }
-
-    FEEDBACK_REUNIAO = {
-        "name": "Feedback da Reunião de Vendas",
-        "description": (
-            "1- Enviar para o privado do cliente esse link para que ele possa avaliar a reunião de venda\n\n\n"
-            "Oi! Tudo bem? 😊\n"
-            "Mandando mensagem aqui, para saber oque achou da reunião de Vendas que realizou com o Pedro/Joao!\n\n"
-            "Isso ajuda nosso time a evoluir e atender cada vez melhor!\n\n"
-            "Pedimos apenas 1 minutinho do seu tempo para avaliar como foi a conversa:\n"
-            "👉 https://agenda.mattefunnelpro.com/widget/survey/ANK5u0eMnuYhv62glrDa\n\n"
-            "Sua opinião faz toda a diferença para nós. Obrigado!"
         ),
     }
 
@@ -97,7 +84,6 @@ def run(client_name: str, company_name: str, service_description: str) -> dict |
     SUBTASKS = [
         BOAS_VINDAS,
         APRESENTACAO_EQUIPE,
-        FEEDBACK_REUNIAO,
         MARCAR_ONBOARDING,
     ]
 
