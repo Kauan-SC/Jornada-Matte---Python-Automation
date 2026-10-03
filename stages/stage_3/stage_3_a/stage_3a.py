@@ -114,7 +114,7 @@ def create_stage_3a(project: dict) -> str | None:
             parent_task_id=task_id,
             name=subtask["name"],
             description=subtask.get("description", ""),
-            assignees=RoleAssignees.CS,
+            assignees=RoleAssignees.GESTOR,
             due_date=data
         )
        

@@ -47,12 +47,10 @@ class ClickUpMembers:
     ISAAC     = 111975410
     KAUAN     = 111975463
     FELIPE    = 118035447
-    VITOR_GUEDSON   = 118065770 
     MARCOS_EDUARDO  = 101717627
 
 # Roles/Assignees Mapping
 class RoleAssignees:
-    CS: ClassVar[list[int]] = [ClickUpMembers.VITOR_GUEDSON]
     GESTOR: ClassVar[list[int]] = [ClickUpMembers.KAUAN]
     DEVS: ClassVar[list[int]] = [
         ClickUpMembers.ISAAC,

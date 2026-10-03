@@ -28,7 +28,7 @@ def run(client_name: str, company_name: str, service_description: str) -> dict |
             f"Apresentação da Equipe\n"
             f"Feedback da Reunião de Vendas\n"
             f"Marcar Onboarding com Cliente"),
-        assignees=RoleAssignees.CS,
+        assignees=RoleAssignees.GESTOR,
         due_date=data
     )
 
@@ -109,7 +109,7 @@ def run(client_name: str, company_name: str, service_description: str) -> dict |
             parent_task_id=task_id,
             name=subtask["name"],
             description=subtask.get("description", ""),
-            assignees=RoleAssignees.CS,
+            assignees=RoleAssignees.GESTOR,
             due_date=data
         )
 

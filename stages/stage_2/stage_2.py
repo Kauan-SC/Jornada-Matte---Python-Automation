@@ -21,7 +21,7 @@ def create_stage_2(project: dict) -> str | None:
             f"Os próximos passos são:\n"
             f"Enviar instruções sobre criação de conta no CRM\n"
             f"Feedback da Reunião de Onboarding\n"),
-        assignees=RoleAssignees.CS,
+        assignees=RoleAssignees.GESTOR,
         due_date=data
     )
 
@@ -74,7 +74,7 @@ def create_stage_2(project: dict) -> str | None:
             parent_task_id=task_id,
             name=subtask["name"],
             description=subtask.get("description", ""),
-            assignees=RoleAssignees.CS,
+            assignees=RoleAssignees.GESTOR,
             due_date=data
             )
        

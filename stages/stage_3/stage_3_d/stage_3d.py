@@ -20,7 +20,7 @@ def create_stage_3d(project: dict) -> str | None:
         status=TaskStatus.TAREFAS_CS,
         description=(
         "Conectar a IA e realizar a entrega para testes do cliente:\n"),
-        assignees=RoleAssignees.CS,
+        assignees=RoleAssignees.GESTOR,
         due_date=data
     )
 
