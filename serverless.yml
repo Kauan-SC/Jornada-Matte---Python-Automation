@@ -1,9 +1,10 @@
 service: Jornada-Matte
 frameworkVersion: '3'
+configValidationMode: error
 
 provider:
   name: aws
-  runtime: python3.11
+  runtime: python3.9
   httpApi:
     cors: true
   
@@ -11,7 +12,7 @@ provider:
 functions:
   jornada-matte:
     handler: handler.webhook
-    timeout: 30
+    timeout: 25
     events:
       - httpApi:
           path: /webhook
