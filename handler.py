@@ -22,9 +22,8 @@ def webhook(event: dict, context: object) -> dict:
 
         client_name: str = body["client_name"]
         company_name: str = body["company_name"]
-        service_description: str = body.get("service_description", "")
 
-        run(client_name, company_name, service_description)            
+        run(client_name, company_name)            
 
         logger.info(f"Webhook recebecido - {company_name} {client_name}")
 

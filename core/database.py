@@ -1,8 +1,9 @@
 from datetime import datetime
-
+from typing import Any
 from supabase import Client, create_client
 
 from config import SUPABASE_KEY, SUPABASE_URL
+
 
 # Supabase
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
@@ -10,7 +11,7 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 # -------------------------------------------------------------------
 
 # Get all task determined in the stage
-def get_active_projects_by_stage(stage: str) -> list[dict]:
+def get_active_projects_by_stage(stage: str) -> list[Any]:
     return (
         supabase.table("projects")
         .select("*")
@@ -38,7 +39,6 @@ def insert_project_branch(original: dict, stage: str, task_id: str) -> None:
     supabase.table("projects").insert({
         "company_name": original["company_name"],
         "client_name": original.get("client_name", ""),
-        "service_description": original.get("service_description", ""),
         "current_stage": stage,
         "task_id": task_id,
         "status": "active",
@@ -46,7 +46,7 @@ def insert_project_branch(original: dict, stage: str, task_id: str) -> None:
     }).execute()
 
 # Get all Completed projects
-def get_completed_projects_by_stage(stage: str) -> list[dict]:
+def get_completed_projects_by_stage(stage: str) -> list[Any]:
     return (
         supabase.table("projects")
         .select("*")

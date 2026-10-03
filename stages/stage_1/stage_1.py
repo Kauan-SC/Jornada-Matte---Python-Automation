@@ -9,7 +9,7 @@ logger = get_logger(__name__)
 
 # ETAPA: 1 - Boas-Vindas, Apresentação da Equipe, Feedback da Reunião de Vendas e Marcar Onboarding com Cliente
 
-def run(client_name: str, company_name: str, service_description: str) -> dict | None:
+def run(client_name: str, company_name: str) -> dict | None:
 
     # Histórico do projeto no log
     logger.info(f"Etapa 1 Iniciada - {company_name}")
@@ -110,8 +110,6 @@ def run(client_name: str, company_name: str, service_description: str) -> dict |
                 "status": ProjectStatus.ACTIVE,
                 "created_at": datetime.now(timezone.utc).isoformat(),  
                 "started_at": datetime.now(timezone.utc).isoformat(),
-                "service_description": service_description,
-
             }).execute()
 
             # Se der certo, logar a informação de sucesso
