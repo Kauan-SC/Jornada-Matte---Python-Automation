@@ -7,10 +7,10 @@ logger = get_logger(__name__)
 
 # Check if projects are completed using the ID to get the task infos
 def check_stage_4a() -> None:
-    projects = get_active_projects_by_stage(Stages.STAGE_4A)
+    projects = get_active_projects_by_stage(Stages.STAGE_4)
 
     for project in projects:
         if is_task_completed(project["task_id"]):
-            logger.info(f"Projeto {project['company_name']}: Etapa 4A concluida. Personalização do CRM concluida!")
+            logger.info(f"Projeto {project['company_name']}: Etapa 4 concluida. Personalização do CRM concluida!")
 
             update_completed_project(project["id"], Stages.FINAL_STAGE_CRM, project["task_id"])

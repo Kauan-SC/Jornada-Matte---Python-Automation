@@ -34,13 +34,19 @@ def create_stage_3c(project: dict) -> str | None:
         name=f"Revisão da IA - {project['company_name']}",
         status=TaskStatus.TAREFAS_DEV,
         description=(
-        "Necessário realizar a revisão da IA, o que verificar:\n\n"
+        "Checklist de Revisão da IA\n\n"
         
-        "- Prompt conciso e fazendo sentido\n"
-        "- Fluxos de trabalho sendo acionados\n"
-        "- Campos Personalizados sendo preenchidos\n"
-        "- IA respondendo de forma coerente e sem alucinações\n"
-        "- IA realizando agendamento OU repassando para consultor\n"),
+        "- Atendimento completo: A IA precisa atender o lead de ponta a ponta (incluir print do teste completo).\n\n"
+
+        "- Registros de sistema: Capturar prints das conversas no WhatsApp e do registro no CRM.\n\n"
+
+        "- Campos personalizados: Validar se os dados foram preenchidos corretamente no CRM.\n\n"
+
+        "- Notificações: Confirmar o envio de alerta para o consultor (incluir print da notificação).\n\n"
+
+        "- Pipeline automática: Garantir que a oportunidade seja movida de etapa automaticamente conforme o avanço do contato.\n\n"
+        
+        "Importante: As imagens de comprovação são obrigatórias. Após coletar os prints, monte um documento consolidado e envie no grupo do cliente para atestar o funcionamento da IA."),
         assignees=reviewer,
         due_date=data
     )

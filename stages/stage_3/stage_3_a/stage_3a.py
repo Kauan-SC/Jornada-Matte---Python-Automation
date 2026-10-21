@@ -57,54 +57,25 @@ def create_stage_3a(project: dict) -> str | None:
 # ----------------------------------------------------------------------------------------------------------------------------------------------
 
     # Dados de cada subtarefa
-    CADASTRO_LEADS = {
-        "name": "Cadastro de Leads, Calendários e Horários",
+    SUBTASK_UNICA = {
+        "name": "Personalização do CRM — Leads, Integrações e WhatsApp",
         "description": (
-            "Mensagem 1 — Leads:\n\n"
-            "Boa tarde, @cliente! Dentro do CRM conseguimos importar e organizar todos os seus contatos.\n\n"
-            "Se vocês já trabalharam com alguma lista de clientes ou usaram outro CRM, é só enviar aqui que fazemos a importação completa.\n\n"
-            "────────────────────\n\n"
-            "Mensagem 2 — Time:\n\n"
-            "Além disso, para cadastrarmos os membros do time no sistema, precisamos do:\n"
-            "Nome, Sobrenome, Telefone e E-mail de cada pessoa.\n\n"
-            "────────────────────\n\n"
-            "Mensagem 3 — Calendário:\n\n"
-            "Também conseguimos integrar um calendário individual para cada membro do time(Para reuniões e outros), com disponibilidade personalizada para agendamentos.\n\n"
-            "Vocês têm interesse em habilitar isso? Se sim, qual seria a disponibilidade ?"
+            "Boa tarde, @cliente!\n\n"
+
+            "Para finalizar a personalização do CRM, precisamos de 4 informações/ações:\n\n"
+
+            "1️⃣ E-mail do time:\n"
+            "Para cadastrarmos os membros do time no sistema, envie Nome, Sobrenome, Telefone e E-mail de cada pessoa.\n\n"
+
+            "2️⃣ Conectar Facebook/Instagram:\n"
+
+            "3️⃣ Importar Leads\n"
+
+            "4️⃣ Conectar WhatsApp\n"
         ),
     }
 
-    CAPTACAO_LEADS = {
-        "name": "Captação e Integração de Leads",
-        "description": (
-            "Pessoal, além dos contatos manuais, o CRM também recebe leads automaticamente via anúncios, sites e formulários.\n\n"
-            "Vocês rodam campanhas na Meta (Facebook/Instagram) ou têm algum site ou formulário ativo?\n\n"
-            "Se sim, conseguimos conectar tudo e criar um dashboard de leads direto no sistema."
-        ),
-    }
-
-    AUTOMACOES = {
-        "name": "Automações",
-        "description": (
-            "Boa tarde, pessoal!\n\n"
-            "Para deixar o CRM ainda mais eficiente, conseguimos configurar:\n\n"
-            "• Divisão automática de contatos entre os membros do time\n"
-            "• Respostas automáticas para comentários e mensagens no Instagram, Facebook e TikTok\n\n"
-            "Como podemos implementar isso para vocês?"
-        ),
-    }
-
-    COMUNICACAO_CANAIS = {
-        "name": "Comunicação e Canais",
-        "description": (
-            "Pessoal, a última etapa é conectar o WhatsApp de vocês ao CRM. Temos duas opções:\n\n"
-            "1️⃣ API Oficial — $15 dólares/mês para a Meta + custo por disparo. Sem risco de bloqueio. Recomendado para maior volume de atendimento.\n\n"
-            "2️⃣ WhatsApp Business — gratuito, funciona como o WhatsApp Web. Exige mais cuidado com volume de mensagens para evitar bloqueios.\n\n"
-            "Qual das duas faz mais sentido para vocês?"
-        ),
-    }
-
-    SUBTASKS = [CADASTRO_LEADS, CAPTACAO_LEADS, AUTOMACOES, COMUNICACAO_CANAIS]
+    SUBTASKS = [SUBTASK_UNICA]
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------
 

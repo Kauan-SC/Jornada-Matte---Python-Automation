@@ -19,11 +19,7 @@ def create_stage_4a(project: dict) -> str | None:
         name=f"Onboarding do CRM - {project['company_name']}",
         status=TaskStatus.REUNIOES_KAUAN,
         description=(
-            "As próximas etapas são:\n\n"
-            
-            "- Marcar Onboarding do CRM com todo o time\n"
-            "- Feedback do Onboarding do CRM\n"
-            "- Pedir Indicação\n"),
+            "- Marcar Onboarding do CRM com todo o time\n"),
         assignees=RoleAssignees.GESTOR,
         due_date=data
     )
@@ -51,26 +47,7 @@ def create_stage_4a(project: dict) -> str | None:
         ),
     }
 
-    FEEDBACK_ONBOARDING = {
-        "name": "Feedback do Onboarding do CRM",
-        "description": (
-            "Enviar mensagem no privado do cliente:\n\n"
-            "Ola, tudo bem? Passando aqui para saber o que achou da reunião de Onboarding e como está sendo o projeto até agora. Tem algum elogio ou crítica?\n\n"
-            "Sua opinião é muito importante pra gente e levamos isso muito a sério 🙏"
-        ),
-    }
-
-    INDICACAO = {
-        "name": "Pedir Indicação",
-        "description": (
-            "⚠️ Executar apenas se o cliente respondeu positivamente no Feedback do Onboarding.\n\n"
-            "Enviar mensagem:\n\n"
-            "Que legal! Ficamos muito felizes em saber que está gostando 😄\n\n"
-            "Se você conhecer alguém que acha que esse sistema também pode fazer sentido para o negócio dela, e puder nos repassar o contato, ficaremos muito gratos!\n\n"
-        ),
-    }
-
-    SUBTASKS = [MARCAR_ONBOARDING_CRM, FEEDBACK_ONBOARDING, INDICACAO]
+    SUBTASKS = [MARCAR_ONBOARDING_CRM]
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------
 

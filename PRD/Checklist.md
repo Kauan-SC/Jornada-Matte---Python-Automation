@@ -49,17 +49,11 @@
 - [x] Criar `stages/stage_3d_check.py` — 20/06
 - [x] Encadear: ao concluir, disparar a Etapa 4b — 20/06
 
-### Etapa 4a — Onboarding do CRM
-- [x] Criar `stages/stage_4a.py` — 20/06
-- [x] Criar a tarefa única com as sub-tarefas (Marcar Onboarding, Feedback, Indicação condicional) — 20/06
-
-### Etapa 4b — Plano de Ação de 90 Dias
-- [x] Criar `stages/stage_4b.py` — 20/06
-- [x] Criar a tarefa única com as 2 sub-tarefas (Marcar Reunião, Feedback Pós-Reunião) — 20/06
-
-### Etapa Final — Acompanhamento de 30 Dias
-- [x] Criar `stages/stage_final.py` — 20/06
-- [x] Criar a tarefa única com as sub-tarefas de acompanhamento — 20/06
+### Etapa 4 — Onboarding do CRM
+- [x] Criar `stages/stage_4/stage_4.py` — 20/06
+- [x] Criar a tarefa única com a sub-tarefa de Onboarding do CRM — 20/06
+- [x] Criar `stages/stage_4/stage_4_check.py` — 20/06
+- [x] Encadear: ao concluir, marcar `FINAL_STAGE_CRM` — 20/06
 
 ### Funcionalidades Transversais
 - [x] Atribuição de proprietário (fixo por padrão; sorteio automático na 3c) — 20/06
@@ -92,7 +86,7 @@
 - [x] Recebimento do webhook e parsing dos dados do cliente
 - [x] Criação das tarefas no ClickUp com identificação do cliente no título
 - [x] Sistema de verificação de conclusão de etapa (polling via EventBridge)
-- [x] Encadeamento 1 → 2 → 3 (bifurcação 3a/3b→3c→3d) → 4 → Final
+- [x] Encadeamento 1 → 2 → 3 (bifurcação 3a/3b→3c→3d) → 4 (CRM e IA finalizam em paralelo)
 - [x] Logging estruturado
 - [x] Persistência de estado no Supabase
 - [x] Variáveis de ambiente para credenciais

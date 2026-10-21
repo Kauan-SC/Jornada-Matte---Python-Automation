@@ -54,7 +54,7 @@ def check_stages(event: dict, context: object) -> dict:
     from stages.stage_3.stage_3_b.stage_3b_check import check_stage_3b
     from stages.stage_3.stage_3_c.stage_3c_check import check_stage_3c
     from stages.stage_3.stage_3_d.stage_3d_check import check_stage_3d
-    from stages.stage_final.stage_final_check import check_stage_4a
+    from stages.stage_4.stage_4_check import check_stage_4a
 
     for nome, func in [
         ("stage_1", check_stage_1),
@@ -63,7 +63,7 @@ def check_stages(event: dict, context: object) -> dict:
         ("stage_3.stage_3_b", check_stage_3b),
         ("stage_3.stage_3_c", check_stage_3c),
         ("stage_3.stage_3_d", check_stage_3d),
-        ("stage_final", check_stage_4a),
+        ("stage_4", check_stage_4a),
     ]:
         for tentativa in range(1, MAX_TENTATIVAS + 1):
 
@@ -82,48 +82,6 @@ def check_stages(event: dict, context: object) -> dict:
                     time.sleep(60)
 
     return {"statusCode": 200, "body": json.dumps({"Ok": True})}
-
-#  --------------------------------------------------------------------------
-
-# Validação - Two times a week
-def validacao_check(event: dict, context: object) -> dict:
-    try:
-        from stages.stage_follow_up.validacao.validacao_check import validacao_check
-        validacao_check()
-        return {
-            "statusCode": 200,
-            "body":json.dumps({"Ok": True}),
-
-        }
-    
-    except Exception as e:
-        logger.error(f"Erro na verificação da tarefa: {type(e).__name__}: {e}")
-        logger.error(traceback.format_exc())
-        return {
-            "statusCode": 500,
-            "body": json.dumps({"Error": str(e)}),
-        }
-    
-#  --------------------------------------------------------------------------
-
-# Checkpoint - One time a week
-def checkpoint_check(event: dict, context: object) -> dict:
-    try:
-        from stages.stage_follow_up.checkpoint.checkpoint_check import checkpoint_check
-        checkpoint_check()
-        return {
-            "statusCode": 200,
-            "body":json.dumps({"Ok": True}),
-
-        }
-    
-    except Exception as e:
-        logger.error(f"Erro na verificação da tarefa: {type(e).__name__}: {e}")
-        logger.error(traceback.format_exc())
-        return {
-            "statusCode": 500,
-            "body": json.dumps({"Error": str(e)}),
-        }
 
 #  --------------------------------------------------------------------------
 

@@ -17,8 +17,7 @@ class Stages:
     STAGE_3B = "stage_3_b"
     STAGE_3C = "stage_3_c"
     STAGE_3D = "stage_3_d"
-    STAGE_4A = "stage_4_a"
-    STAGE_4B = "stage_4_b"
+    STAGE_4 = "stage_4"
     FINAL_STAGE_CRM = "final_stage_CRM"
     FINAL_STAGE_IA = "final_stage_IA"
 

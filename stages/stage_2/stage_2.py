@@ -18,9 +18,7 @@ def create_stage_2(project: dict) -> str | None:
         status=TaskStatus.TAREFAS_CS,
         description=(
             f"O cliente {project['client_name']} deu o segundo passo\n\n\n"
-            f"Os próximos passos são:\n"
-            f"Enviar instruções sobre criação de conta no CRM\n"
-            f"Feedback da Reunião de Onboarding\n"),
+            f"Enviar instruções sobre criação de conta no CRM\n"),
         assignees=RoleAssignees.GESTOR,
         due_date=data
     )
@@ -35,23 +33,14 @@ def create_stage_2(project: dict) -> str | None:
 # ----------------------------------------------------------------------------------------------------------------------------------------------
 
     # Dados de cada subtarefa
-    PROXIMOS_PASSOS = {
-        "name": "Enviar instruções ao Cliente",
-        "description":(
-            "1- Enviar detalhes sobre criação da conta no CRM\n\n\n"
-            "@Cliente para a gente começar a rodar o seu CRM, preciso que você finalize a assinatura no link abaixo:\n\n"
-            "👉 https://ativar.magneticfunnels.io/conta-partner\n\n"    
-            "🚨*ATENÇÃO*🚨\n"
-            "Use o cupom *matte100* para ativar 12 meses de desconto na ferramenta.\n\n"
-            "Qualquer dúvida na hora de preencher, me chama aqui.\n\n\n\n\n"
-            "---------------------------------------\n\n\n"
-            "2- Enviar segunda mensagem relembrando que é necessário o uso do cupom.\n\n\n"
-            "*ATENÇÃO:* @Cliente, é necessário o uso do *CUPOM*\n"
-            "O valor da compra precisa ser de R$0,00"
-        ) 
+    MARCAR_ONBOARDING = {
+        "name": "Marcar Onboarding com Cliente",
+        "description": (
+            "1- Marcar o Onboarding de Apresentação com o cliente\n\n"
+        ),
     }
 
-    SUBTASKS = [PROXIMOS_PASSOS]
+    SUBTASKS = [MARCAR_ONBOARDING]
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------
 

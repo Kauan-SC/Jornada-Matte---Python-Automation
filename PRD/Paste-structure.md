@@ -45,14 +45,9 @@ jornada_matte/
 │   │   └── stage_3_d/
 │   │       ├── stage_3d.py
 │   │       └── stage_3d_check.py
-│   ├── stage_4/
-│   │   ├── stage_4_a/
-│   │   │   └── stage_4a.py
-│   │   └── stage_4_b/         
-│   │       └── stage_4b.py
-│   └── stage_final/
-│       ├── stage_final.py
-│       └── stage_final_check.py
+│   └── stage_4/
+│       ├── stage_4.py
+│       └── stage_4_check.py
 │
 ├── dashboard/                 # Pendente de implementação
 │   ├── app.py
@@ -92,4 +87,5 @@ jornada_matte/
 | `integrations/whatsapp.py` | Não existe ainda |
 | `tests/` flat | `tests/` com subpastas por contexto |
 | — | `logs/` e `PRD/` adicionados |
-| `stage_4_b/` | `Stage_4_b/` — capital S, inconsistência a corrigir |
+| `stage_4a`/`stage_4b`/`stage_final` separados | Consolidados em um único `stage_4/stage_4.py` + `stage_4_check.py` |
+| `stage_follow_up/` (checkpoint, validação) | Removido do projeto |
